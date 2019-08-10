@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"strconv"
 	"syscall/js"
+	"time"
 )
 
 func add(this js.Value, i []js.Value) interface{} {
+	start := time.Now()
 	number1 := js.Global().Get("document").Call("getElementById", "number1").Get("value").String()
 	number2 := js.Global().Get("document").Call("getElementById", "number2").Get("value").String()
 
@@ -16,6 +18,8 @@ func add(this js.Value, i []js.Value) interface{} {
 
 	js.Global().Get("document").Call("getElementById", "output").Set("innerHTML", result)
 
+	elapsed := time.Since(start)
+	fmt.Println(elapsed)
 	return result
 }
 
