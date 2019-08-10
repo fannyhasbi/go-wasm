@@ -27,15 +27,16 @@
         await go.run(inst);
       }
     );
-
-    async function run() {
-      await go.run(inst);
-      inst = await WebAssembly.instantiate(mod, go.importObject); // reset instance
-    }
   </script>
 </head>
 <body>
-  <button type="button" onclick="add(1, 2)">ADD</button>
-  <button type="button" onClick="run()" id="runButton" disabled>Run</button>
+  <input type="number" id="number1">
+  <input type="number" id="number2">
+  <button type="button" onclick="add()">ADD</button>
+
+  <div>
+    <h1>Output</h1>
+    <h2 id="output"></h2>
+  </div>
 </body>
 </html>
